@@ -9,6 +9,7 @@ public class MeshDeformerInput : MonoBehaviour
     public float forceOffset = 0.1f;
 
     public static bool pressed = false;
+    private bool mouseUp = true;
 
     private Camera mainCamera;
 
@@ -23,10 +24,12 @@ public class MeshDeformerInput : MonoBehaviour
         {
             HandleInput();
             pressed = true;
+            mouseUp = false;
         }
         else if (Input.GetMouseButtonUp(0))
         {
             StartCoroutine(StopSimulation());
+            mouseUp = true;
             Debug.Log("up");
         }
     }
@@ -52,6 +55,9 @@ public class MeshDeformerInput : MonoBehaviour
     private IEnumerator StopSimulation()
     {
         yield return twoSeconds;
-        pressed = false;
+        if (mouseUp)
+        {
+            pressed = false;
+        }
     }
 }

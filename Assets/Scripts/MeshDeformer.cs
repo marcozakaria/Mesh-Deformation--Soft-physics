@@ -88,5 +88,4 @@ public class MeshDeformer : MonoBehaviour
         vertexVelocities[i] += pointToVertex.normalized * velocity;
       
     }
-
 }
